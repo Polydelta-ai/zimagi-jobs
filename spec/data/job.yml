@@ -51,7 +51,7 @@ data:
             description:
                 type: "@django.TextField"
                 options:
-                    "null": false
+                    "null": true
             department:
                 type: "@django.ForeignKey"
                 relation: organization
