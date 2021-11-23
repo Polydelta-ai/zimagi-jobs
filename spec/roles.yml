@@ -1,0 +1,7 @@
+roles:
+    organization-admin: Organization administrator (full privileges over organization related models and commands)
+    organization-auditor: Organization auditor (viewing privileges over organization related models)
+    location-admin: Location administrator (full privileges over location related models and commands)
+    location-auditor: Location auditor (viewing privileges over location related models)
+    job-admin: Job administrator (full privileges over job related models and commands)
+    job-auditor: Job auditor (viewing privileges over job related models)
