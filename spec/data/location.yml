@@ -1,0 +1,85 @@
+data_mixins:
+    location:
+        class: LocationMixin
+        fields:
+            location:
+                type: "@django.ForeignKey"
+                relation: location
+                options:
+                    "null": true
+                    on_delete: "@django.PROTECT"
+                    editable: false
+
+    locations:
+        class: LocationsMixin
+        fields:
+            locations:
+                type: "@django.ManyToManyField"
+                relation: location
+
+data_base:
+    location:
+        class: LocationBase
+        base: resource
+        mixins: [location]
+        id_fields: [location_id, name]
+        meta:
+            unique_together: [location, name]
+            scope: location
+
+data:
+    location:
+        class: Location
+        base: resource
+        roles:
+            edit: [location-admin]
+            view: [public]
+        fields:
+            country:
+                type: "@django.CharField"
+                options:
+                    "null": false
+                    max_length: 256
+            province:
+                type: "@django.CharField"
+                options:
+                    "null": true
+                    max_length: 256
+            city:
+                type: "@django.CharField"
+                options:
+                    "null": false
+                    max_length: 256
+            longitude:
+                type: "@django.FloatField"
+                options:
+                    "null": true
+            latitude:
+                type: "@django.FloatField"
+                options:
+                    "null": true
+        meta:
+            ordering_fields: [country, province, city, longitude, latitude]
+            ordering: [country, province, city]
+            search_fields: [country, province, city, longitude, latitude]
+
+command_mixins:
+    location:
+        class: LocationMixin
+        meta:
+            location:
+                data: location
+                priority: 1
+
+command_base:
+    location:
+        mixins: [location]
+        server_enabled: true
+        groups_allowed: [location-admin]
+
+command:
+    location:
+        resource: location
+        base: location
+        base_name: location
+        priority: 60
