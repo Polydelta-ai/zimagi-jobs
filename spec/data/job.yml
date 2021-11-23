@@ -1,0 +1,152 @@
+data_mixins:
+    job:
+        class: JobMixin
+        fields:
+            job:
+                type: "@django.ForeignKey"
+                relation: job
+                options:
+                    "null": true
+                    on_delete: "@django.PROTECT"
+                    editable: false
+
+    jobs:
+        class: JobsMixin
+        fields:
+            jobs:
+                type: "@django.ManyToManyField"
+                relation: job
+
+data_base:
+    job:
+        class: JobBase
+        base: resource
+        mixins: [job]
+        id_fields: [job_id, name]
+        meta:
+            unique_together: [job, name]
+            scope: job
+
+data:
+    job:
+        class: Job
+        base: job_source
+        mixins: [organization, locations, job_classifications]
+        roles:
+            edit: [job-admin]
+            view: [public]
+        id_fields: [source_id, external_id]
+        key: external_id
+        fields:
+            external_id:
+                type: "@django.CharField"
+                options:
+                    "null": false
+                    max_length: 256
+            url:
+                type: "@django.URLField"
+                options:
+                    "null": false
+                    max_length: 256
+            description:
+                type: "@django.TextField"
+                options:
+                    "null": false
+            department:
+                type: "@django.ForeignKey"
+                relation: organization
+                color: relation
+                options:
+                    "null": true
+                    on_delete: "@django.SET_NULL"
+                    related_name: "%(class)s_department"
+                    editable: false
+            qualifications:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            evaluations:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            requirements:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            required_documents:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            duties:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            education:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            benefits:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            benefits_url:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            start_date:
+                type: "@django.DateTimeField"
+                options:
+                    "null": true
+            end_date:
+                type: "@django.DateTimeField"
+                options:
+                    "null": true
+            publication_date:
+                type: "@django.DateTimeField"
+                options:
+                    "null": true
+            application_close_date:
+                type: "@django.DateTimeField"
+                options:
+                    "null": true
+            how_to_apply:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            what_to_expect:
+                type: "@django.TextField"
+                options:
+                    "null": true
+            other_information:
+                type: "@django.TextField"
+                options:
+                    "null": true
+        meta:
+            unique_together: [source, external_id]
+            ordering: [source__name, name]
+            search_fields: [source__name, name]
+
+command_mixins:
+    job:
+        class: JobMixin
+        mixins: [job_source, organization, job_classification]
+        meta:
+            department:
+                data: organization
+                priority: 5
+            job:
+                data: job
+                priority: 6
+
+command_base:
+    job:
+        mixins: [job]
+        server_enabled: true
+        groups_allowed: [job-admin]
+
+command:
+    job:
+        resource: job
+        base: job
+        base_name: job
+        priority: 75
