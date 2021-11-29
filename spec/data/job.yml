@@ -94,7 +94,7 @@ data:
                 options:
                     "null": true
             benefits_url:
-                type: "@django.TextField"
+                type: "@django.URLField"
                 options:
                     "null": true
             start_date:
