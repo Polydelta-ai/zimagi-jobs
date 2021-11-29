@@ -81,6 +81,10 @@ data:
                 type: "@django.TextField"
                 options:
                     "null": true
+            travel_requirements:
+                type: "@django.TextField"
+                options:
+                    "null": true
             education:
                 type: "@django.TextField"
                 options:
@@ -119,6 +123,26 @@ data:
                     "null": true
             other_information:
                 type: "@django.TextField"
+                options:
+                    "null": true
+            telework_eligible:
+                type: "@django.BooleanField"
+                options:
+                    "null": true
+            supervisory_status:
+                type: "@django.BooleanField"
+                options:
+                    "null": true
+            drug_test_required:
+                type: "@django.BooleanField"
+                options:
+                    "null": true
+            relocation_expenses_reimbursed:
+                type: "@django.BooleanField"
+                options:
+                    "null": true
+            openings:
+                type: "@django.IntegerField"
                 options:
                     "null": true
         meta:
