@@ -34,7 +34,14 @@ data:
         roles:
             edit: [location-admin]
             view: [public]
+        id_fields: [generated_id]
+        key: generated_id
         fields:
+            generated_id:
+                type: "@django.CharField"
+                options:
+                    "null": false
+                    max_length: 256
             country:
                 type: "@django.CharField"
                 options:
