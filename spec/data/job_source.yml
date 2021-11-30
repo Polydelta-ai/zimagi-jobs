@@ -35,14 +35,13 @@ data:
             edit: [job-admin]
             view: [public]
         meta:
-          verbose_name: source
           command_base: job source
 
 command_mixins:
     job_source:
         class: JobSourceMixin
         meta:
-            source:
+            job_source:
                 data: job_source
                 priority: 1
 
@@ -57,5 +56,5 @@ command:
         source:
             resource: job_source
             base: job_source
-            base_name: source
+            base_name: job_source
             priority: 50

@@ -43,7 +43,6 @@ data:
                     "null": false
                     max_length: 20
         meta:
-            verbose_name: classification
             ordering_fields: [code, name]
             ordering: [code]
             search_fields: [code, name]
@@ -53,7 +52,7 @@ command_mixins:
     job_classification:
         class: JobClassificationMixin
         meta:
-            classification:
+            job_classification:
                 data: job_classification
                 priority: 1
 
@@ -68,5 +67,5 @@ command:
         classification:
             resource: job_classification
             base: job_classification
-            base_name: classification
+            base_name: job_classification
             priority: 60
