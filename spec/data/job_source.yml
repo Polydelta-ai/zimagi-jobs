@@ -42,6 +42,7 @@ command_mixins:
         class: JobSourceMixin
         meta:
             job_source:
+                alt_names: source
                 data: job_source
                 priority: 1
 

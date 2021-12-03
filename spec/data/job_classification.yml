@@ -53,6 +53,7 @@ command_mixins:
         class: JobClassificationMixin
         meta:
             job_classification:
+                alt_names: classification
                 data: job_classification
                 priority: 1
 
