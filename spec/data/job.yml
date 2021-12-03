@@ -146,9 +146,9 @@ data:
                 options:
                     "null": true
         meta:
-            unique_together: [source, external_id]
-            ordering: [source__name, name]
-            search_fields: [source__name, name]
+            unique_together: [job_source, external_id]
+            ordering: [job_source__name, name]
+            search_fields: [job_source__name, name]
 
 command_mixins:
     job:
