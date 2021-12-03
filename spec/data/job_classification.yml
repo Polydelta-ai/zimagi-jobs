@@ -2,7 +2,7 @@ data_mixins:
     job_classification:
         class: JobClassificationMixin
         fields:
-            classification:
+            job_classification:
                 type: "@django.ForeignKey"
                 relation: job_classification
                 options:
@@ -13,7 +13,7 @@ data_mixins:
     job_classifications:
         class: JobClassificationsMixin
         fields:
-            classifications:
+            job_classifications:
                 type: "@django.ManyToManyField"
                 relation: job_classification
 
@@ -22,10 +22,10 @@ data_base:
         class: JobClassificationBase
         base: resource
         mixins: [job_classification]
-        id_fields: [classification_id, name]
+        id_fields: [job_classification_id, name]
         meta:
-            unique_together: [classification, name]
-            scope: classification
+            unique_together: [job_classification, name]
+            scope: job_classification
 
 data:
     job_classification:
@@ -53,7 +53,6 @@ command_mixins:
         class: JobClassificationMixin
         meta:
             job_classification:
-                alt_names: classification
                 data: job_classification
                 priority: 1
 

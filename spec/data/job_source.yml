@@ -2,7 +2,7 @@ data_mixins:
     job_source:
         class: JobSourceMixin
         fields:
-            source:
+            job_source:
                 type: "@django.ForeignKey"
                 relation: job_source
                 options:
@@ -13,7 +13,7 @@ data_mixins:
     job_sources:
         class: JobSourcesMixin
         fields:
-            sources:
+            job_sources:
                 type: "@django.ManyToManyField"
                 relation: job_source
 
@@ -22,10 +22,10 @@ data_base:
         class: JobSourceBase
         base: resource
         mixins: [job_source]
-        id_fields: [source_id, name]
+        id_fields: [job_source_id, name]
         meta:
-            unique_together: [source, name]
-            scope: source
+            unique_together: [job_source, name]
+            scope: job_source
 
 data:
     job_source:
@@ -42,7 +42,6 @@ command_mixins:
         class: JobSourceMixin
         meta:
             job_source:
-                alt_names: source
                 data: job_source
                 priority: 1
 
