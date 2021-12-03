@@ -35,7 +35,7 @@ data:
         roles:
             edit: [job-admin]
             view: [public]
-        id_fields: [source_id, external_id]
+        id_fields: [job_source_id, external_id]
         key: external_id
         fields:
             external_id:
