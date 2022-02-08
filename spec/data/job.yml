@@ -20,7 +20,7 @@ data_mixins:
 data_base:
     job:
         class: JobBase
-        base: resource
+        base: id_resource
         mixins: [job]
         id_fields: [job_id, name]
         meta:
@@ -148,7 +148,6 @@ data:
         meta:
             unique_together: [job_source, external_id]
             ordering: [job_source__name, name]
-            search_fields: [job_source__name, name]
 
 command_mixins:
     job:
