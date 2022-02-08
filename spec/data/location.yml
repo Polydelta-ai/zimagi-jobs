@@ -34,7 +34,8 @@ data:
         roles:
             edit: [location-admin]
             view: [public]
-        id_fields: [country, province, city]
+        id_fields: null
+        id: id
         key: id
         fields:
             country:
