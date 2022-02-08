@@ -20,7 +20,7 @@ data_mixins:
 data_base:
     organization:
         class: OrganizationBase
-        base: resource
+        base: id_resource
         mixins: [organization]
         id_fields: [organization_id, name]
         meta:
@@ -30,8 +30,10 @@ data_base:
 data:
     organization:
         class: Organization
-        base: resource
+        base: id_resource
         mixins: [locations]
+        id_fields: [name]
+        key: id
         roles:
             edit: [organization-admin]
             view: [public]
