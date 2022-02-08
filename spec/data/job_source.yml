@@ -20,7 +20,7 @@ data_mixins:
 data_base:
     job_source:
         class: JobSourceBase
-        base: resource
+        base: id_resource
         mixins: [job_source]
         id_fields: [job_source_id, name]
         meta:
@@ -30,7 +30,7 @@ data_base:
 data:
     job_source:
         class: JobSource
-        base: resource
+        base: name_resource
         roles:
             edit: [job-admin]
             view: [public]
