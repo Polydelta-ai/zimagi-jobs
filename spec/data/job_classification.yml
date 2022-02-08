@@ -20,7 +20,7 @@ data_mixins:
 data_base:
     job_classification:
         class: JobClassificationBase
-        base: resource
+        base: id_resource
         mixins: [job_classification]
         id_fields: [job_classification_id, name]
         meta:
@@ -30,8 +30,8 @@ data_base:
 data:
     job_classification:
         class: JobClassification
-        base: resource
-        id_fields: [code]
+        base: name_resource
+        id: code
         key: code
         roles:
             edit: [job-admin]
@@ -43,9 +43,7 @@ data:
                     "null": false
                     max_length: 20
         meta:
-            ordering_fields: [code, name]
             ordering: [code]
-            search_fields: [code, name]
             command_base: job classification
 
 command_mixins:
