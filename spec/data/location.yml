@@ -20,7 +20,7 @@ data_mixins:
 data_base:
     location:
         class: LocationBase
-        base: resource
+        base: id_resource
         mixins: [location]
         id_fields: [location_id, name]
         meta:
@@ -30,18 +30,13 @@ data_base:
 data:
     location:
         class: Location
-        base: resource
+        base: id_resource
         roles:
             edit: [location-admin]
             view: [public]
-        id_fields: [generated_id]
-        key: generated_id
+        id_fields: [country, province, city]
+        key: id
         fields:
-            generated_id:
-                type: "@django.CharField"
-                options:
-                    "null": false
-                    max_length: 256
             country:
                 type: "@django.CharField"
                 options:
@@ -66,9 +61,8 @@ data:
                 options:
                     "null": true
         meta:
-            ordering_fields: [country, province, city, longitude, latitude]
+            unique_together: [country, province, city]
             ordering: [country, province, city]
-            search_fields: [country, province, city, longitude, latitude]
 
 command_mixins:
     location:
