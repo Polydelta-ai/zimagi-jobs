@@ -40,8 +40,14 @@ data:
             code:
                 type: "@django.CharField"
                 options:
-                    "null": false
+                    primary_key: true
                     max_length: 20
+                    editable: false
+            name:
+                type: "@django.CharField"
+                options:
+                    "null": false
+                    max_length: 256
         meta:
             ordering: [code]
             command_base: job classification
