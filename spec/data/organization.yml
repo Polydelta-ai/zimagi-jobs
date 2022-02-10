@@ -50,8 +50,10 @@ data:
 command_mixins:
     organization:
         class: OrganizationMixin
-        mixins: [location]
         meta:
+            locations:
+                data: location
+                priority: 1
             organization:
                 data: organization
                 priority: 2
