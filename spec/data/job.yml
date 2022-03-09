@@ -47,7 +47,7 @@ data:
                 type: "@django.URLField"
                 options:
                     "null": false
-                    max_length: 256
+                    max_length: 1000
             description:
                 type: "@django.TextField"
                 options:
@@ -97,6 +97,7 @@ data:
                 type: "@django.URLField"
                 options:
                     "null": true
+                    max_length: 1000
             start_date:
                 type: "@django.DateTimeField"
                 options:
